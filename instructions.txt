@@ -1,0 +1,24 @@
+app.js, database.js, common.js
+app.js will check for middleware.js and will select page accordingly
+mixins.pug extennds home.pug (Mixins: using same code at multiple locations)
+
+login.pug (extends login-layout.pug)
+
+1.) Account exist
+	Get, post: loginRoute.js
+	User Schema
+	Home.pug (extends main-layout.pug)
+	Post (PostSchema, /api/posts.js) 
+	
+
+
+
+
+
+2.) New Account (Go to Register Page)
+	Register.pug page will be appearing
+	registerRoutes.js (get, post)
+	Redirect to Home page
+	Uses UserSchema to add the user to database
+	Then same as 1.)
+	

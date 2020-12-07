@@ -10,11 +10,6 @@ login.pug (extends login-layout.pug)
 	Home.pug (extends main-layout.pug)
 	Post (PostSchema, /api/posts.js) 
 	
-
-
-
-
-
 2.) New Account (Go to Register Page)
 	Register.pug page will be appearing
 	registerRoutes.js (get, post)

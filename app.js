@@ -4,7 +4,7 @@ const port = 3002;
 const middleware = require('./middleware')
 const path = require('path')
 const bodyParser = require("body-parser")
-const mongoose = require("./database")
+const mongoose = require("./database");
 const session = require("express-session");
 
 const server = app.listen(port, () => console.log("Server listening on port " + port));
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(session({
-    secret:"Suck at almost everything",
+    secret: "enjoy",
     resave: true,
     saveUninitialized: false
 }))
@@ -24,21 +24,22 @@ app.use(session({
 // Routes
 const loginRoute = require('./routes/loginRoutes');
 const registerRoute = require('./routes/registerRoutes');
-const logoutRoute = require('./routes/logoutRoutes');
 
-// Api Routes
+// Api routes
 const postsApiRoute = require('./routes/api/posts');
 
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
-app.use("/logout", logoutRoute);
 
 app.use("/api/posts", postsApiRoute);
 
 app.get("/", middleware.requireLogin, (req, res, next) => {
+
     var payload = {
-        pageTitle: "Home",        
-        userLoggedIn: req.session.user
+        pageTitle: "Home",
+        userLoggedIn: req.session.user,
+        userLoggedInJs: JSON.stringify(req.session.user),
     }
+
     res.status(200).render("home", payload);
 })
